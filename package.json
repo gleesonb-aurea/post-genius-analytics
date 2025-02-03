@@ -1,0 +1,8 @@
+{
+  "name": "social-analysis",
+  "version": "1.0.0",
+  "dependencies": {
+    "chart.js": "4.2.1",
+    "chartjs-chart-matrix": "2.0.0"
+  }
+}

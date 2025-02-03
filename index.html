@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Genius Analytics</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Post Genius Analytics</h1>
+        <div class="engagement-explanation">
+            <h3>Engagement Score Calculation:</h3>
+            <p>Engagement Score = (Views × 0.5) + (Comments × 2) + (Reactions × 1)</p>
+            <ul>
+                <li>Views are weighted at 0.5 as they represent passive engagement</li>
+                <li>Comments are weighted at 2.0 as they represent active engagement</li>
+                <li>Reactions (likes, shares) are weighted at 1.0 as they represent moderate engagement</li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="upload-section">
+            <h2>Upload CSV</h2>
+            <input type="file" id="csv-upload" accept=".csv">
+        </section>
+
+        <section id="visualizations">
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Engagement Rate by Platform</h2>
+                    </div>
+                    <canvas id="engagement-rate-chart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Time-Based Engagement Trends</h2>
+                    </div>
+                    <canvas id="time-based-trends-chart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Post Format Performance</h2>
+                    </div>
+                    <canvas id="post-format-chart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Top Performing Tags</h2>
+                    </div>
+                    <canvas id="tags-chart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Creator Performance</h2>
+                    </div>
+                    <canvas id="creator-chart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Posting Schedule Impact</h2>
+                    </div>
+                    <canvas id="schedule-chart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Comment Impact Analysis</h2>
+                    </div>
+                    <canvas id="comment-impact-chart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
