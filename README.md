@@ -19,7 +19,7 @@ A modern web-based analytics dashboard for social media performance analysis. Vi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/post-genius-analytics.git
+   git clone https://github.com/gleesonb-aurea/post-genius-analytics.git
    cd post-genius-analytics
    ```
 
