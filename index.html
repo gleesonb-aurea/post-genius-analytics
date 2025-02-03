@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Genius Analytics</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/llm.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <header>
@@ -76,6 +78,24 @@
                     </div>
                     <canvas id="comment-impact-chart"></canvas>
                 </div>
+            </div>
+        </section>
+
+        <section class="analysis-section">
+            <h2>AI Analysis</h2>
+            <div class="analysis-controls">
+                <div class="api-key-group">
+                    <input type="password" id="api-key-input" placeholder="OpenAI API Key" />
+                    <button id="save-api-key" class="key-button">Save Key</button>
+                </div>
+                <button id="get-ai-analysis" class="analysis-button" disabled>Get AI Analysis</button>
+            </div>
+            <div id="llm-response" class="llm-response">
+                <div id="loading-spinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <div class="spinner-text">Analyzing your data...</div>
+                </div>
+                <div id="analysis-content"></div>
             </div>
         </section>
     </main>

@@ -4,15 +4,20 @@ A modern web-based analytics dashboard for social media performance analysis. Vi
 
 ## Features
 
-- Interactive heatmap with purple gradient colors
-- Consolidated platform name analysis
-- Stable Chart.js v4.2.1 integration
+- Comprehensive social media analytics dashboard
+- Interactive data visualizations using Chart.js
+- Advanced AI analysis powered by OpenAI GPT-4
+- Secure API key management
+- Modern, responsive UI design
+- Support for multiple social media platforms
+- Real-time data processing and validation
 
 ## Getting Started
 
 ### Prerequisites
 
-- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Modern web browser (Chrome, Firefox, Safari, or Edge)
+- OpenAI API key for AI analysis features
 - Local web server (optional)
 
 ### Installation
@@ -33,6 +38,27 @@ A modern web-based analytics dashboard for social media performance analysis. Vi
    ```
 
 3. Visit `http://localhost:8000` in your browser
+
+### Usage
+
+1. **Data Upload**
+   - Click "Choose File" to upload your social media data CSV
+   - The dashboard will automatically process and display visualizations
+
+2. **AI Analysis**
+   - Enter your OpenAI API key in the input field
+   - Click "Save Key" to securely store it in your browser
+   - Click "Get AI Analysis" to receive detailed insights
+   - The key is stored locally and never sent to any server except OpenAI
+
+3. **Visualizations**
+   - Engagement rate trends
+   - Time-based performance analysis
+   - Content format effectiveness
+   - Tag performance metrics
+   - Creator performance insights
+   - Posting schedule impact
+   - Comment analysis
 
 ## CSV Data Format
 
@@ -59,6 +85,13 @@ Your CSV file should include the following columns:
     }
   ]
   ```
+
+## Security Notes
+
+- API keys are stored securely in your browser's localStorage
+- Keys are never transmitted to any server except OpenAI
+- Clear your browser data to remove stored API keys
+- Never commit API keys to version control
 
 ## Development
 
@@ -93,3 +126,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - [Chart.js](https://www.chartjs.org/) for visualization
 - [PapaParse](https://www.papaparse.com/) for CSV parsing
+- [OpenAI](https://openai.com/) for AI analysis
