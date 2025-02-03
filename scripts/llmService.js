@@ -34,7 +34,7 @@ export async function getLLMAnalysis(prompt) {
                 'Authorization': `Bearer ${config.API_KEY}`
             },
             body: JSON.stringify({
-                model: "gpt-4",
+                model: "gpt-4o",
                 messages: [{
                     role: "system",
                     content: "You are a social media analytics expert. Analyze the provided data and give clear, actionable insights."
