@@ -6,6 +6,9 @@ import { calculateMetrics, validateDate, validateData } from './utils.js';
  * @returns {Object} Object containing engagement metrics by platform
  */
 export function processEngagementRate(data) {
+    if (!Array.isArray(data)) {
+        throw new Error('Expected data to be an array');
+    }
     const platformStats = new Map();
 
     data.forEach(post => {
@@ -34,7 +37,12 @@ export function processEngagementRate(data) {
 }
 
 function normalizePlatformName(platform) {
-    return platform.trim().toLowerCase();
+    const name = platform.toLowerCase().trim();
+    // Normalize X/Twitter to a single name
+    if (name === 'x' || name === 'twitter') {
+        return 'twitter';
+    }
+    return name;
 }
 
 /**
@@ -356,3 +364,83 @@ export function processCommentImpact(data) {
         uniqueTitles: range.titles.size
     }));
 }
+
+/**
+ * Generates analysis prompts for an LLM based on processed data
+ * @param {Array<Object>} data - Array of validated social media post data
+ * @returns {Object} Object containing various analysis prompts
+ */
+export function generateAnalysisPrompts(data) {
+    // Get processed data from other functions
+    const platformMetrics = processEngagementRate(data);
+    const timeBasedMetrics = processTimeBasedTrends(data);
+    const formatMetrics = processPostFormatPerformance(data);
+    const tagMetrics = processTagPerformance(data);
+    const creatorMetrics = processCreatorPerformance(data);
+    const scheduleMetrics = processScheduleImpact(data);
+    const commentMetrics = processCommentImpact(data);
+
+    return {
+        platformAnalysis: `Analyze the following platform engagement data and identify sustained high performers and emerging trends: ${JSON.stringify(platformMetrics)}. 
+What variables appear to affect engagement across different platforms? Consider factors like content type, posting frequency, and audience demographics.`,
+
+        timeBasedAnalysis: `Review these time-based engagement metrics: ${JSON.stringify(timeBasedMetrics)}. 
+What daily, weekly, or seasonal patterns emerge? Identify significant peaks and dips, and suggest potential contributing factors.`,
+
+        formatAnalysis: `Examine this content format performance data: ${JSON.stringify(formatMetrics)}. 
+Which formats consistently drive higher engagement? What correlations exist between media types and audience interaction?`,
+
+        tagAnalysis: `Based on this tag performance data: ${JSON.stringify(tagMetrics)}. 
+Which tags drive the highest engagement rates? Are there notable tag combinations that correlate with improved performance?`,
+
+        creatorAnalysis: `Analyze creator performance metrics: ${JSON.stringify(creatorMetrics)}. 
+What patterns distinguish top performers? Consider posting frequency, content types, and engagement rates.`,
+
+        scheduleAnalysis: `Review this posting schedule impact data: ${JSON.stringify(scheduleMetrics)}. 
+How do posting times and frequency correlate with engagement? Identify optimal time slots for audience response.`,
+
+        commentAnalysis: `Evaluate this comment impact data: ${JSON.stringify(commentMetrics)}. 
+What's the relationship between comment volume and overall engagement? Do higher comment counts indicate deeper audience interest?`,
+
+        anomalyAnalysis: `Using all available metrics, identify significant outliers and anomalies in the data. 
+What potential causes might explain these unexpected performance patterns?`,
+
+        predictiveAnalysis: `Based on all historical trends in the data, what patterns might help forecast future engagement? 
+Suggest specific strategies for optimizing future posting approaches based on past performance.`
+    };
+}
+
+/**
+ * Generates recommendations based on analysis
+ * @param {Array<Object>} data - Array of validated social media post data
+ * @returns {Object} Structured recommendations
+ */
+export function generateRecommendations(data) {
+    const metrics = {
+        platform: processEngagementRate(data),
+        timeBased: processTimeBasedTrends(data),
+        format: processPostFormatPerformance(data),
+        tags: processTagPerformance(data),
+        creators: processCreatorPerformance(data),
+        schedule: processScheduleImpact(data),
+        comments: processCommentImpact(data)
+    };
+
+    return `Based on the following social media performance metrics: ${JSON.stringify(metrics, null, 2)},
+provide specific, actionable recommendations for:
+1. Platform strategy adjustments
+2. Optimal posting schedules
+3. Content format optimization
+4. Tag strategy improvements
+5. Creator performance enhancement
+6. Engagement boosting tactics
+7. Comment generation strategies
+
+For each recommendation, include:
+- The data points supporting the recommendation
+- Expected impact on engagement
+- Implementation steps
+- Potential challenges to consider`;
+}
+
+// Export all functions...

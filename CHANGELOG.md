@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-02-03
+
+### Added
+- Integrated OpenAI GPT-4 for advanced social media analytics
+- Added AI analysis feature with Claude.ai-inspired UI
+- Added secure API key management with localStorage
+- Added loading spinner for analysis feedback
+
+### Changed
+- Improved data visualization flow with separate AI analysis step
+- Enhanced error handling for data processing and API calls
+- Updated UI with modern styling and better user feedback
+- Separated data processing from AI analysis for better performance
+
+### Fixed
+- Fixed Chart.js matrix plugin loading for schedule impact visualization
+- Fixed chart cleanup to prevent rendering issues
+- Improved error handling for invalid data formats
+
 ## [1.0.0] - 2025-02-03
 
 ### Added
